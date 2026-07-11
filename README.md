@@ -7,7 +7,7 @@ A full-stack seat allocation and project mapping application designed to manage 
 ## Live Links
 
 - Frontend: https://your-project.vercel.app
-- Backend: https://your-backend.onrender.com
+- Backend: https://ethara-seat-allocation-1e2x.onrender.com/
 - Swagger API Docs: https://your-backend.onrender.com/docs
 
 ## Features
