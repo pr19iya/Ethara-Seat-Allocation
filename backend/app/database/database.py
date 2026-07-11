@@ -1,32 +1,48 @@
 import os
+from pathlib import Path
 
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
-from sqlalchemy.orm import (
-    declarative_base,
-    sessionmaker,
-)
+from sqlalchemy.orm import declarative_base, sessionmaker
 
 
-load_dotenv()
+BACKEND_DIR = Path(__file__).resolve().parents[2]
+ENV_FILE = BACKEND_DIR / ".env"
 
-DATABASE_URL = os.getenv(
-    "DATABASE_URL",
-    "sqlite:///./ethara.db",
-)
+# Loads backend/.env locally.
+# Railway variables are already available through os.environ.
+load_dotenv(ENV_FILE)
 
-connect_args = {}
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    raise RuntimeError(
+        "DATABASE_URL is missing. "
+        "Add it to backend/.env locally or Railway Variables."
+    )
+
+# Some providers return postgres://, while SQLAlchemy expects postgresql://.
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace(
+        "postgres://",
+        "postgresql://",
+        1,
+    )
+
+
+engine_options = {
+    "pool_pre_ping": True,
+}
 
 if DATABASE_URL.startswith("sqlite"):
-    connect_args = {
+    engine_options["connect_args"] = {
         "check_same_thread": False,
     }
 
 
 engine = create_engine(
     DATABASE_URL,
-    pool_pre_ping=True,
-    connect_args=connect_args,
+    **engine_options,
 )
 
 
