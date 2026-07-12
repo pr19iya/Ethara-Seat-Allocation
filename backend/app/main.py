@@ -1,3 +1,6 @@
+
+import os
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -12,11 +15,25 @@ from app.routes.seat import router as seat_router
 from app.routes.allocation import router as allocation_router
 from app.routes.assistant import router as assistant_router
 from app.routes.department import router as department_router
+
+
 app = FastAPI(
     title="Ethara Seat Allocation API",
     version="1.0.0",
     description="Seat Allocation & Project Mapping System"
 )
+
+@app.get("/")
+def root():
+    return {
+        "message": "Ethara Seat Allocation API is running 🚀"
+    }
+@app.get("/health")
+def health():
+    return {
+        "status": "healthy"
+    }
+
 
 # CORS Configuration
 app.add_middleware(
@@ -25,17 +42,14 @@ app.add_middleware(
         "http://localhost:3000",
         "http://127.0.0.1:3000",
     ],
+    allow_origin_regex="https://.*\.(vercel|netlify)\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Health Check
-@app.get("/")
-def root():
-    return {
-        "message": "Ethara Seat Allocation API is running 🚀"
-    }
+
+
 
 # Register Routes
 app.include_router(employee_router)
