@@ -11,7 +11,7 @@ The application also includes an AI assistant capable of answering natural langu
 ---
 ## Live Deployment
 
-Frontend: ethara-seat-allocation-livid.vercel.app
+Frontend: https://ethara-seat-allocation-livid.vercel.app
 
 Backend: https://ethara-seat-allocation-1e2x.onrender.com
 
