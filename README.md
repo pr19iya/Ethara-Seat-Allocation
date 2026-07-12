@@ -12,7 +12,9 @@ The application also includes an AI assistant capable of answering natural langu
 ## Live Deployment
 
 Frontent: ethara-seat-allocation-kqgd3psql-pr19iyas-projects.vercel.app
+
 Backend: https://ethara-seat-allocation-1e2x.onrender.com
+
 Swagger: https://ethara-seat-allocation-1e2x.onrender.com/docs
 
 
