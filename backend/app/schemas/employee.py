@@ -8,8 +8,8 @@ class EmployeeBase(BaseModel):
     name: str
     email: EmailStr
     role: str
-    joining_date: date
-    department_id: int
+    department_id: Optional[int] = None
+    project_id: Optional[int] = None
     project_id: int
     status: str = "Active"
 
