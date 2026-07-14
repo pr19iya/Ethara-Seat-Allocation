@@ -11,7 +11,7 @@ ENV_FILE = BACKEND_DIR / ".env"
 
 # Loads backend/.env locally.
 # Railway variables are already available through os.environ.
-load_dotenv(ENV_FILE)
+load_dotenv(ENV_FILE, override=True)
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 
