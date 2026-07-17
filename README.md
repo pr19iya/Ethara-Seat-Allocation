@@ -306,9 +306,3 @@ GitHub: https://github.com/pr19iya
 
 ```
 
-### Before submitting, replace these placeholders:
-
-- `<YOUR_VERCEL_URL>` → your deployed frontend URL.
-- `<YOUR_RENDER_URL>` → your deployed backend URL.
-
-This README aligns well with the assessment requirements and documents the project in a clear, professional way.
